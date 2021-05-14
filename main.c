@@ -1,37 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-#include "header.h"
+#include "headersav2.h"
 
 int main(void)
 {
-    setlocale(LC_ALL,"portuguese");
+
+//    setlocale(LC_ALL, "portuguese");
+
 /*________________________________________ex1___________________________*/
-    Elemento *p;
-    Elemento *p2;
-    char ahah[10];
-printf("çé");
-    p=pilha_cria();
-    scanf("%s",ahah);
-    pilha_push(p,ahah);
-    scanf("%s",ahah);
-    pilha_push(p2,ahah);
-
-    int result=comparar_oposto(p,p2);
-
-    if(result==1){
-        printf("щ da forma x C y");
-    }else{
-        printf("nуo щ da forma x C y");
-    }
-
-    pilha_libera(p);
-    pilha_libera(p2);
+//    Elemento *p;
+//    Elemento *p2;
+//    char ahah[10];
+//
+//    p=pilha_cria();
+//    scanf("%s",ahah);
+//    pilha_push(p,ahah);
+//    scanf("%s",ahah);
+//    pilha_push(p2,ahah);
+//
+//    int result=comparar_oposto(p,p2);
+//
+//    if(result==1){
+//        printf("é da forma x C y");
+//    }else{
+//        printf("não da forma x C y");
+//    }
+//
+//    pilha_libera(p);
+//    pilha_libera(p2);
 
 /*________________________________________ex2___________________________*/
 
 //    Elemento *p;
-//    char ahah[10];
+//    char ahah[100];
 //    int retorno;
 //
 //    p=pilha_cria();
@@ -41,9 +43,9 @@ printf("çé");
 //    retorno=ver_tem_D(p);
 //
 //    if(retorno==1){
-//        printf("cadeia de caracteres %s щ da forma x C y", ahah);
+//        printf("cadeia de caracteres %s � da forma x C y", ahah);
 //    }else{
-//        printf("cadeia de caracteres %s nуo щ da forma x C y", ahah);
+//        printf("cadeia de caracteres %s n�o � da forma x C y", ahah);
 //
 //    }
 //
@@ -51,12 +53,19 @@ printf("çé");
 
 /*________________________________________ex3___________________________*/
 
+    char expre[20], *result;
+    Pilha*p;
+    int u=9;
 
+    printf("Digite a express�o ");
+    scanf("%s", expre);
+    pilha_push(p,expre);
 
+    notacao_reversa(p,expre);
+    result=pilha_pop(p);
 
+    printf("%s",result);
 
-
+    pilha_libera(p);
     return 0;
 }
-
-
