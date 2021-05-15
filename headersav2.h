@@ -33,7 +33,7 @@ void pilha_libera();
 
 int comparar_oposto(Pilha*p, Pilha*p2);
 
-int ver_tem_D(Pilha*p);
+void ver_tem_D(Pilha*p);
 
 void notacao_reversa(Pilha*p, char con[]);
 

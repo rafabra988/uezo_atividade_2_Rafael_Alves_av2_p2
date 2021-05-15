@@ -6,7 +6,7 @@
 int main(void)
 {
 
-//    setlocale(LC_ALL, "portuguese");
+    setlocale(LC_ALL, "portuguese");
 
 /*________________________________________ex1___________________________*/
 //    Elemento *p;

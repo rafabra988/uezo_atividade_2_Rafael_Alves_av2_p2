@@ -79,7 +79,7 @@ int comparar_oposto(Pilha*p, Pilha*p2){
 
 /*________________________________________ex2___________________________*/
 
-int ver_tem_D(Pilha*p){
+void ver_tem_D(Pilha*p){
     char *verific;
     int tam, rest, cont=1, ascii_D=68;
 
@@ -111,20 +111,31 @@ void notacao_reversa(Pilha*p, char con[]){
 
     for(tam=0;tam<strlen(conta);tam++){
         rest=conta[tam];
-            if(rest==so || rest==su){
-                if(operan[i-2]!=conta[tam+1]){
-                    operan[i]=conta[tam-1];
-                    i++;
-                    operan[i]=conta[tam+1];
-                    i++;
-                    operan[i]=conta[tam];
-                    i++;
-                }
-            }else if(rest==mu){
-                mucon++;
-            }else if(rest==di){
-                divcon++;
+
+        if(i==strlen(conta)){
+            operan[i]='\0';
+            break;
+        }
+
+        if(rest==so || rest==su){
+            if(operan[i-2]==conta[tam-1]){
+                operan[i]=conta[tam+1];
+                i++;
+                operan[i]=conta[tam];
+                i++;
+            }else{
+                operan[i]=conta[tam-1];
+                i++;
+                operan[i]=conta[tam+1];
+                i++;
+                operan[i]=conta[tam];
+                i++;
             }
+        }else if(rest==mu){
+            mucon++;
+        }else if(rest==di){
+            divcon++;
+        }
     }
     if(mucon>0 || divcon>0){
         mucon+=i;
