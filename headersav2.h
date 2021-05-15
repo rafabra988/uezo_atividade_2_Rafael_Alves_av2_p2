@@ -13,13 +13,18 @@ typedef struct elemento
     struct elemento *prox
 }Elemento;
 
-struct pilha
+typedef struct pilha
 {
     char *descricao;
     Elemento *prim;
-};
+}Pilha;
 
-typedef struct pilha Pilha;
+typedef struct elemento2{
+    int info;
+    struct elemento *prox;
+}Elemento2;
+
+Elemento2 *init;
 
 Pilha *pilha_cria(void);
 
@@ -37,5 +42,14 @@ void ver_tem_D(Pilha*p);
 
 void notacao_reversa(Pilha*p, char con[]);
 
+Elemento2* lst_cria (void);
+
+Elemento2* lst_insere (Elemento2* lst, int val);
+
+void lst_imprime (Elemento2* lst);
+
+void lst_libera (Elemento2* lst);
+
+Elemento2* lst_concatena(Elemento2* lst, Elemento2* lst2);
 
 #endif // HEADERSAV2_H_INCLUDED

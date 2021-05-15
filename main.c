@@ -53,19 +53,61 @@ int main(void)
 
 /*________________________________________ex3___________________________*/
 
-    char expre[20], *result;
-    Pilha*p;
-    int u=9;
+//    char expre[20], *result;
+//    Pilha*p;
+//    int u=9;
+//
+//    printf("Digite a expressão ");
+//    scanf("%s", expre);
+//    pilha_push(p,expre);
+//
+//    notacao_reversa(p,expre);
+//    result=pilha_pop(p);
+//
+//    printf("%s",result);
+//
+//    pilha_libera(p);
 
-    printf("Digite a expressão ");
-    scanf("%s", expre);
-    pilha_push(p,expre);
+/*________________________________________ex5___________________________*/
 
-    notacao_reversa(p,expre);
-    result=pilha_pop(p);
+        int resp, v;
 
-    printf("%s",result);
+        Elemento2* lst, *lst2 , *lst3;
 
-    pilha_libera(p);
+        lst = lst_cria();
+        lst2 = lst_cria();
+        lst3 = lst_cria();
+
+        printf("quanta posições tera na primeira lista?\n");
+        scanf("%d",&resp);
+
+        for(int i=0;i<resp;i++){
+            printf("qual o valor do %dº elemento?",i+1);
+            scanf("%d",&v);
+            lst = lst_insere(lst, v);
+        }
+
+        printf("\nquanta posições tera na segunda lista?\n");
+        scanf("%d",&resp);
+
+        for(int i=0;i<resp;i++){
+            printf("qual o valor do %dº elemento?",i+1);
+            scanf("%d",&v);
+            lst2 = lst_insere(lst2,v);
+        }
+
+        lst3=lst_concatena(lst,lst2);
+
+        printf("\nFirst List: ");
+        lst_imprime(lst);
+        printf("\nSecond List: ");
+        lst_imprime(lst2);
+        printf("\nThird List: ");
+        lst_imprime(lst3);
+
+        lst_libera(lst);
+        lst_libera(lst2);
+        lst_libera(lst3);
+
     return 0;
 }

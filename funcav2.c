@@ -52,6 +52,43 @@ void pilha_libera(Pilha *p)
     free(p);
 }
 
+Elemento2* lst_cria (void){
+    Elemento2 *aux;
+    aux=(Elemento2*)malloc(sizeof(Elemento2));
+    init=aux;
+    return NULL;
+}
+
+Elemento2* lst_insere (Elemento2* lst, int val){
+    Elemento2* aux=init;
+    int v=0;
+    Elemento2* novo =(Elemento2*)malloc(sizeof(Elemento2));
+    novo->info = val;
+    novo->prox = lst;
+    if(v<1){
+        aux->prox=novo;
+        v=1;
+    }
+    return novo;
+}
+
+void lst_imprime (Elemento2* lst){
+    Elemento2* p;
+    for (p = lst; p != NULL; p = p->prox){
+        printf("%d -> ", p->info);
+    }
+    printf("NULL");
+}
+
+void lst_libera (Elemento2* lst){
+    Elemento2 *p = lst, *t;
+    while (p != NULL){
+        t = p->prox;
+        free(p);
+        p = t;
+    }
+}
+
 /*________________________________________ex1___________________________*/
 
 
@@ -149,4 +186,43 @@ void notacao_reversa(Pilha*p, char con[]){
     }
 
     pilha_push(p,operan);
+}
+
+/*________________________________________ex5___________________________*/
+
+Elemento2* lst_concatena(Elemento2* lst, Elemento2* lst2){
+    Elemento2* p1,* p2,* lst3;
+    Pilha*p;
+    p1=lst;
+    p2=lst2;
+    int cont=0, aux2;
+    char aux[0];
+
+    lst3 = lst_cria();
+    p=pilha_cria();
+
+    while(p1!=NULL){
+        aux[0]=p1->info;
+        pilha_push(p,aux);
+        p1=p1->prox;
+        cont++;
+    }
+
+    while(p2!=NULL){
+        aux[0]=p2->info;
+        printf("%d", aux);
+        pilha_push(p,aux);
+        p2=p2->prox;
+        cont++;
+    }
+
+
+    for(int i=0;i<cont;i++){
+        aux2=pilha_pop(p);
+        lst3=lst_insere(lst3,aux2);
+    }
+
+    return lst3;
+    pilha_libera(p);
+    lst_libera(lst3);
 }
