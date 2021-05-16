@@ -1,10 +1,52 @@
 #include "headersav2.h"
-Pilha *pilha_cria(void)
-{
-    Pilha *p = (Pilha *)malloc(sizeof(Pilha));
+Pilhaint* pilha_criaint (void){
+    Pilhaint *p = (Pilhaint*) malloc(sizeof(Pilhaint));
     p->prim = NULL;
     return p;
 }
+
+int pilha_vaziaint (Pilhaint* p){
+    if(p->prim == NULL)
+    return 1;
+    return 0;
+}
+
+void pilha_pushint (Pilhaint* p, int v){
+    Elpilha *novo;
+    novo = (Elpilha*) malloc(sizeof(Elpilha));
+    novo->info = v;
+    novo->prox = p->prim;
+    p->prim = novo;
+}
+
+int pilha_popint (Pilhaint* p){
+    Elpilha *t;
+    int v;
+//    if (pilha_vazia(p)){
+//        printf("Pilha vazia.\n");
+//        return 0;
+//    }
+
+    t = p->prim;
+    v = t->info;
+    p->prim = t->prox;
+    free(t);
+    return v;
+}
+
+void pilha_liberaint (Pilhaint* p){
+    Elpilha *t, *q = p->prim;
+    while (q!=NULL)
+    {
+        t = q->prox;
+        free(q);
+        q = t;
+    }
+    free(p);
+}
+
+/*-----------------------------------------------------------------*/
+
 
 int pilha_vazia(Pilha *p)
 {
@@ -139,7 +181,7 @@ void ver_tem_D(Pilha*p){
 
 /*________________________________________ex3___________________________*/
 
-void notacao_reversa(Pilha*p, char con[]){
+void notacao_reversa(Pilha*p){
 
     int tam, rest, mu=42, so=43, su=45, di=47, pa1=40,pa2=41,i=0, mucon=0, divcon=0;
     char *conta ,operan[100];
@@ -192,37 +234,34 @@ void notacao_reversa(Pilha*p, char con[]){
 
 Elemento2* lst_concatena(Elemento2* lst, Elemento2* lst2){
     Elemento2* p1,* p2,* lst3;
-    Pilha*p;
+    Pilhaint*p;
     p1=lst;
     p2=lst2;
     int cont=0, aux2;
-    char aux[0];
+    char aux[1];
 
     lst3 = lst_cria();
-    p=pilha_cria();
+    p=pilha_criaint();
 
     while(p1!=NULL){
-        aux[0]=p1->info;
-        pilha_push(p,aux);
+        pilha_pushint(p,p1->info);
         p1=p1->prox;
         cont++;
     }
 
     while(p2!=NULL){
-        aux[0]=p2->info;
-        printf("%d", aux);
-        pilha_push(p,aux);
+        pilha_pushint(p,p2->info);
         p2=p2->prox;
         cont++;
     }
 
 
     for(int i=0;i<cont;i++){
-        aux2=pilha_pop(p);
+        aux2=pilha_popint(p);
         lst3=lst_insere(lst3,aux2);
     }
 
     return lst3;
-    pilha_libera(p);
+    pilha_liberaint(p);
     lst_libera(lst3);
 }

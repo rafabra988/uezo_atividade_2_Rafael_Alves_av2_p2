@@ -6,7 +6,7 @@
 #include <conio.h>
 #include <string.h>
 #define N 10
-
+//pilha char
 typedef struct elemento
 {
     char info[10];
@@ -19,9 +19,21 @@ typedef struct pilha
     Elemento *prim;
 }Pilha;
 
+//pilha int
+typedef struct elemenint{
+    int info;
+    struct elemenint *prox
+}Elpilha;
+
+typedef struct pilhint{
+    char *descricao;
+    Elemento *prim;
+}Pilhaint;
+
+//lista
 typedef struct elemento2{
     int info;
-    struct elemento *prox;
+    struct elemento2 *prox;
 }Elemento2;
 
 Elemento2 *init;
@@ -40,7 +52,7 @@ int comparar_oposto(Pilha*p, Pilha*p2);
 
 void ver_tem_D(Pilha*p);
 
-void notacao_reversa(Pilha*p, char con[]);
+void notacao_reversa(Pilha*p);
 
 Elemento2* lst_cria (void);
 
@@ -51,5 +63,16 @@ void lst_imprime (Elemento2* lst);
 void lst_libera (Elemento2* lst);
 
 Elemento2* lst_concatena(Elemento2* lst, Elemento2* lst2);
+
+Pilhaint* pilha_criaint (void);
+
+int pilha_vaziaint (Pilhaint* p);
+
+void pilha_pushint (Pilhaint* p, int v);
+
+int pilha_popint (Pilhaint* p);
+
+void pilha_liberaint (Pilhaint* p);
+
 
 #endif // HEADERSAV2_H_INCLUDED

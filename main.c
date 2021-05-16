@@ -61,7 +61,7 @@ int main(void)
 //    scanf("%s", expre);
 //    pilha_push(p,expre);
 //
-//    notacao_reversa(p,expre);
+//    notacao_reversa(p);
 //    result=pilha_pop(p);
 //
 //    printf("%s",result);
@@ -108,6 +108,7 @@ int main(void)
         lst_libera(lst);
         lst_libera(lst2);
         lst_libera(lst3);
+
 
     return 0;
 }
